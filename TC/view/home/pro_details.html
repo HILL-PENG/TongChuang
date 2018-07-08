@@ -1,0 +1,52 @@
+<html>
+	<meta charset="utf-8">
+	<head>
+	<title>产品详情</title>
+	<link rel="stylesheet" href="<?php echo PU ?>css/pubilic.css">
+	<link rel="stylesheet" href="<?php echo PU ?>css/pro_details.css">
+	<script src="<?php echo PU ?>js/jquery-1.8.3.min.js"></script>
+	<script src="<?php echo PU ?>js/js.js"></script>
+	</head>
+	<body>
+	
+		<!--广告开始-->
+		<div id="banner">
+		<ul>
+			<?php foreach($result as $v){ ?>
+			<li><a href="index.php?mot=home&ctl=<?php echo $v['b_ctl']?>"><img src="<?php echo 'upload/'.$v['b_img']?>"></a></li>
+			<?php } ?>
+		</ul>
+			<div class="tagle">
+				<img src="<?php echo PU ?>images/prev.png" id="prev">
+				<img src="<?php echo PU ?>images/next.png" id="next">
+				</div>
+				<div id="num">
+					<span class="on"></span><span></span><span></span>
+				</div>
+			</div>
+		</div>
+		<!--广告结束-->
+		<!--产品开始-->
+		<div class="product">
+			<h2>产品中心</h2>
+			<div class="content">
+				<div id="menu">
+			<ul>
+				<?php foreach($result2 as $v2){?>
+					<li <?php echo $v2['m_id']==$result1['p_type']?'class="on"':''?>><a href="index.php?mot=home&ctl=product&id=<?php echo $v2['m_id']?>" ><i></i><span><?php echo $v2['m_name']?></span></a></li>
+				<?php }?>
+			</ul>
+			</div>
+					<img width="1079px" height="727px" src="<?php echo 'upload/'.$result1['p_img']?>">
+				<div class="text">
+					<h3>参数</h3>
+					<div><?php echo $result1['p_abstract']?></div>
+					<p><?php echo $result1['p_content']?></p>
+				</div>
+			</div>
+		</div>
+		<!--产品结束-->
+
+		
+		</body>
+</html>

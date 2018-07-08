@@ -1,0 +1,73 @@
+<html>
+	<meta charset="utf-8">
+	<head>
+	<title>新闻详情</title>
+	<link rel="stylesheet" href="<?php echo PU ?>css/pubilic.css">
+	<link rel="stylesheet" href="<?php echo PU ?>css/news_details.css">
+	<script src="<?php echo PU ?>js/jquery-1.8.3.min.js"></script>
+	<script src="<?php echo PU ?>js/js.js"></script>
+	</head>
+	<body>
+	
+		<!--广告开始-->
+		<div id="banner">
+		<ul>
+			<?php foreach($result as $v){ ?>
+			<li><a href="index.php?mot=home&ctl=<?php echo $v['b_ctl']?>"><img src="<?php echo 'upload/'.$v['b_img']?>"></a></li>
+			<?php } ?>
+		</ul>
+			<div class="tagle">
+				<img src="<?php echo PU ?>images/prev.png" id="prev">
+				<img src="<?php echo PU ?>images/next.png" id="next">
+				</div>
+				<div id="num">
+					<span class="on"></span><span></span><span></span>
+				</div>
+			</div>
+		</div>
+		<!--广告结束-->
+		<!--新闻开始-->
+		<div class="news">
+		<div class="menu" id="menu">
+			<h3>新闻中心</h3>
+			<ol>
+			<?php foreach($result2 as $v2){?>
+				<li  ><a href="index.php?mot=home&ctl=news&id=<?php echo $v2['m_id']?>" <?php echo $v2['m_id']==$result1['n_type']?'class="on"':''?> ><?php echo $v2['m_name']?></a></li>
+			<?php }?>		
+			</ol>
+		</div>
+		<div class="content">
+		<h4><?php echo $result1['n_title']?></h4>
+			<p><?php echo substr($result1['n_entry_time'],0,4)?>年<?php echo substr($result1['n_entry_time'],5,2)?>月<?php echo substr($result1['n_entry_time'],8,2)?>日 <?php echo substr($result1['n_entry_time'],11,2)?>:<?php echo substr($result1['n_entry_time'],14,2)?>
+			<div class="con">
+			<ul>
+				<li><img width="593px" height="303px" src="<?php echo 'upload/'.$result1['n_img']?>"></li>
+				<li><img width="593px" height="303px"  src="<?php echo 'upload/'.$result1['n_img2']?>"></li>
+			</ul>
+			<div class="text">
+				<!-- <h5>港珠澳大桥预计七一前通车 “大桥游”率先火起来</h5> -->
+				<p><?php echo $result1['n_content']?></p>
+			</div>
+			</div>
+			</div>
+		<!--page开始-->
+			<div class="flip">
+			<?php if($result3!=null){ ?>
+				<a href="index.php?mot=home&ctl=news_details&id=<?php echo $result3['n_id']?>#menu"><span>上一篇</span><?php echo $result3['n_title']?></a>
+			<?php }else{?>
+				<a href="###"><span>上一篇</span>无</a>
+			<?php }?>
+
+			<?php if($result4!=null){ ?>
+				<a href="index.php?mot=home&ctl=news_details&id=<?php echo $result4['n_id']?>#menu"><span>下一篇</span><?php echo $result4['n_title']?></a>
+			<?php }else{?>
+				<a href="###"><span>下一篇</span>无</a>
+			<?php }?>
+			
+			</div>
+
+		</div>
+		<!--page结束-->
+		
+	</body>
+</html>

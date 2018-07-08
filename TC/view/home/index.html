@@ -1,0 +1,139 @@
+<html>
+	<meta charset="utf-8">
+	<head>
+	<title>首页</title>
+	<link rel="stylesheet" href="<?php echo PU ?>css/pubilic.css">
+	<link rel="stylesheet" href="<?php echo PU ?>css/index.css">
+<!--[if lt IE 9]>      
+        <style>
+         .vide video {display:none;}
+          .radius { display:block;}
+        </style>    
+<![endif]--> 
+	<script src="<?php echo PU ?>js/jquery-1.8.3.min.js"></script>
+	<script src="<?php echo PU ?>js/js.js"></script>
+	<script src="<?php echo PU ?>js/demo.js"></script>
+	<style>
+		#pic ul img{
+			width: 290px;
+			height: 280px;
+		}
+		#pic ul li:first-child img{
+			width: 579px;
+			height: 577px;
+		}
+	</style>
+	</head>
+	<body>
+
+	
+		<!--广告开始-->
+
+		<div id="banner">
+		<ul>
+			<?php foreach($result as $v){ ?>
+			<li><a href="index.php?mot=home&ctl=<?php echo $v['b_ctl']?>"><img src="<?php echo 'upload/'.$v['b_img']?>"></a></li>
+			<?php } ?>
+		</ul>
+			<div class="tagle">
+				<img src="<?php echo PU ?>images/prev.png" id="prev">
+				<img src="<?php echo PU ?>images/next.png" id="next">
+				</div>
+				<div id="num">
+					<span class="on"></span><span></span><span></span>
+				</div>
+			</div>
+		</div>
+		<!--广告结束-->
+		<!--产品开始-->
+		<div class="product">
+			<h2 id="chanpin">产品中心</h2>
+			<div class="bg">
+			<div class="content">
+			<div id="menu">
+			<ul>
+				<?php foreach($result4 as $v){?>
+					<li <?php echo $v['m_id']==$id?'class="on"':'' ?>><a href="index.php?mot=home&ctl=index&type=<?php echo $v['m_id'] ?>#chanpin"><i></i><span><?php echo $v['m_name']?></span></a></li>
+				<?php }?>
+			</ul>
+			</div>
+			<div id="pic">
+					<ul <?php echo $result1[0]['p_type']==$id?'class="on"':'' ?> >
+				<?php foreach($result1 as $v){?>
+						<li>
+						<a href="index.php?mot=home&ctl=pro_details&id=<?php echo $v['p_id']?>"><img src="<?php echo 'upload/'.$v['p_img']?>"></a>
+						<div class="text">
+							<a href="index.php?mot=home&ctl=pro_details&id=<?php echo $v['p_id']?>"><span><?php echo $v['p_name']?></span>
+							<i><?php echo mb_substr($v['p_content'],9,8,"utf-8")?></i></a>
+						</div>
+						</li>
+				<?php }?>
+					</ul>
+			</div>
+				</div>
+				</div>
+			<a href="index.php?mot=home&ctl=product">更多<img src="<?php echo PU ?>images/news3.png"></a>
+		</div>
+		<!--产品结束-->
+		<!--新闻开始-->
+		<div class="news">
+		<div class="con">
+			<ul>
+				<li><h4>市场活动<a href="index.php?mot=home&ctl=news">更多　》</a></h4>
+				<a href="index.php?mot=home&ctl=news_details&id=<?php echo $result2[0]['n_id']?>"><img width="370px" height="240px" src="<?php echo 'upload/'.$result2[0]['n_img'] ?>"></a>
+				<a href="index.php?mot=home&ctl=news_details" class="text"><?php echo $result2[0]['n_title']?></a>
+				</li>
+				<li><h4>新闻资讯<a href="index.php?mot=home&ctl=news">更多　》</a></h4>
+				<ol>
+					<?php foreach($result2 as $v){?>
+						<li><a href="index.php?mot=home&ctl=news_details&id=<?php echo $v['n_id']?>"><?php echo substr($v['n_content'],9,10)?><span><?php echo substr($v['n_entry_time'],5,2)?>/<?php echo substr($v['n_entry_time'],8,2)?></span></a></li>
+					<?php }?>
+				</ol></li>
+				<li><h4>企业视频<a href="index.php?mot=home&ctl=news">更多　》</a></h4>
+
+				
+				<!--点击视频播放器开始-->	          
+        <div class="vide"><!--调用的大块做相对定位-->		
+        <div class="pop"><!--调用的背景图片可修改做绝对定位-->		
+          <img id="play" src="<?php echo PU ?>images/video1.png" /><!--调用的图片可替换做绝对定位-->		
+        </div>
+		<!--调用的视频不可更换-->		
+        <video id="Myvideo" width="375px" height="235px">
+          <source src="<?php echo PU ?>images/Compress.MP4" type="video/mp4" /><!--调用的视频可更换-->		
+          <source src="<?php echo PU ?>images/Compress.ogg" type="video/ogg" /><!--调用的视频可更换-->		
+          <source src="<?php echo PU ?>images/Compress.webm" type="video/webm" /><!--调用的视频可更换-->		
+        </video> 
+        <div class="radius">
+        <div id="obj">
+          </div>
+          </div>
+          </div>
+          </li>
+          </ul>
+        </div>
+    </div>
+<!--点击视频播放器结束-->
+				</div>	 
+         </div>
+		<!--新闻结束-->
+		<!--搜索开始-->
+		<div class="search">
+			<h5>您可能需要</h5>
+			<p>对同创产品您还有什么疑问？我们随时为您提供帮助</p>
+			<ul>
+				<li><img src="<?php echo PU ?>images/search1.jpg">
+				<div class="text"><p>产品展示</p><a href="index.php?mot=home&ctl=product">立即前往</a></div>
+				</li>
+				<li><img src="<?php echo PU ?>images/search2.jpg">
+				<div class="text"><p>产品详情</p><a href="index.php?mot=home&ctl=product">立即前往</a></div>
+				</li>
+				<li><img src="<?php echo PU ?>images/search3.jpg"><div class="text"><p>在线资讯</p><a href="index.php?mot=home&ctl=contact_us#content">立即前往</a></div>
+				</li>
+				<li><img src="<?php echo PU ?>images/search4.jpg"><div class="text"><p>地理位置</p><a href="index.php?mot=home&ctl=contact_us#content">立即前往</a></div>
+				</li>
+			</ul>
+		</div>
+		<!--搜索结束-->
+		
+	</body>
+</html>

@@ -1,0 +1,50 @@
+<html>
+	<meta charset="utf-8">
+	<head>
+	<title>关于同创</title>
+	<link rel="stylesheet" href="<?php echo PU ?>css/pubilic.css">
+	<link rel="stylesheet" href="<?php echo PU ?>css/about.css">
+	<script src="<?php echo PU ?>js/jquery-1.8.3.min.js"></script>
+	<script src="<?php echo PU ?>js/js.js"></script>
+	</head>
+	<body>
+	
+		<!--广告开始-->
+		<div id="banner">
+		<ul>
+			<?php foreach($result as $v){ ?>
+			<li><a href="index.php?mot=home&ctl=<?php echo $v['b_ctl']?>"><img src="<?php echo 'upload/'.$v['b_img']?>"></a></li>
+			<?php } ?>
+		</ul>
+			<div class="tagle">
+				<img src="<?php echo PU ?>images/prev.png" id="prev">
+				<img src="<?php echo PU ?>images/next.png" id="next">
+				</div>
+				<div id="num">
+					<span class="on"></span><span></span><span></span>
+				</div>
+			</div>
+		</div>
+		<!--广告结束-->
+		<!--About开始-->
+		<div class="about">
+			<div class="menu" id="menu">
+				<h3>关于同创</h3>
+			<ul>
+			<?php foreach($result2 as $v){?>
+			<li ><a href="index.php?mot=home&ctl=about_us&id=<?php echo $v['a_id']?>#menu" <?php echo $v['a_id']==$id?'class="on"':'' ?> ><?php echo $v['a_p_name']?></a></li>
+			<?php }?>
+			</ul>
+			</div>
+			<div class="content" >
+			
+				<img src="<?php echo 'upload/'.$result1['a_img']?>">
+					<h4 ><?php echo $result1['a_title']?></h4>
+					<p><?php echo $result1['a_con']?></p>
+		
+			</div>
+		</div>
+		<!--About结束-->
+	
+		</body>
+</html>

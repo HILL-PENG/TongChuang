@@ -1,0 +1,36 @@
+	<!--页脚开始-->
+		<div class="footer">
+			<div class="con">
+				<div class="phone" id="phone">
+					<h1>全国统一热线</h1>
+					<p><?php echo $result96['mes_phone']?></p>
+					<a href="###" class="wechat"></a>
+					<a href="###" class="tweet"></a>
+				</div>
+				<div class="about_us">
+				<h1>关于我们</h1>
+					<ul>
+						<?php foreach($result97 as $v97){?>
+							<li><a href="index.php?mot=home&ctl=about_us&id=<?php echo $v97['a_id']?>#menu"><?php echo $v97['a_p_name']?></a></li>
+						<?php }?>
+					</ul>
+				</div>
+				<div class="product">
+					<h1>产品中心</h1>
+					<ul>
+					<?php foreach($result98 as $v){?>
+						<li><a href="index.php?mot=home&ctl=product&id=<?php echo $v['m_id']?>&#menu"><?php echo $v['m_name']?></a></li>
+					<?php }?>
+					</ul>
+				</div>
+				<div class="contact_us">
+					<h1>联系我们</h1>
+					<ul>
+						<li><a href="index.php?mot=home#phone">联系电话</a></li>
+						<li><a href="index.php?mot=home&ctl=contact_us#content">客户留言</a></li>
+					</ul>
+				</div>
+			</div>
+			<p>Copyright ©2017同创 浙ICP备16007586号-1  浙公网安备 33010902111111号版权声明</p>
+		</div>
+		<!--页脚结束-->

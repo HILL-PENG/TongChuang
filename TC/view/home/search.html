@@ -1,0 +1,75 @@
+<html>
+	<meta charset="utf-8">
+	<head>
+	<title>搜索产品</title>
+	<link rel="stylesheet" href="<?php echo PU ?>css/pubilic.css">
+	<link rel="stylesheet" href="<?php echo PU ?>css/product.css">
+	<script src="<?php echo PU ?>js/jquery-1.8.3.min.js"></script>
+	<script src="<?php echo PU ?>js/js.js"></script>
+	</head>
+	<body>
+	
+		<!--广告开始-->
+		<div id="banner">
+		<ul>
+			<?php foreach($result as $v){ ?>
+			<li><a href="index.php?mot=home&ctl=<?php echo $v['b_ctl']?>"><img src="<?php echo 'upload/'.$v['b_img']?>"></a></li>
+			<?php } ?>
+		</ul>
+			<div class="tagle">
+				<img src="<?php echo PU ?>images/prev.png" id="prev">
+				<img src="<?php echo PU ?>images/next.png" id="next">
+				</div>
+				<div id="num">
+					<span class="on"></span><span></span><span></span>
+				</div>
+			</div>
+		</div>
+		<!--广告结束-->
+		<!--产品开始-->
+		<div class="product">
+			<h2>产品中心</h2>
+			<div class="content">
+			<div id="menu">
+			
+			</div>
+				<ul>
+					<?php foreach($result_dangqian as $v2){?>
+					<li><a href="index.php?mot=home&ctl=pro_details&id=<?php echo $v2['p_id']?>"><img style="width:362px;height:365px" src="<?php echo 'upload/'.$v2['p_img']?>"></a></li>
+					<?php }?>
+				</ul>
+			</div>
+		</div>
+		<!--page开始-->
+		<div class="page">
+			<div class="link">
+			<?php if($page-1<1){ ?>
+					<a href="index.php?ctl=search&id=<?php echo $id ?>&page=<?php echo $page-1 ?>#menu" class="top">上一页</a>
+				<?php }else{ ?>
+					<a href="index.php?ctl=search&id=<?php echo $id ?>&page=<?php echo $page ?>#menu" class="top">上一页</a>
+				<?php } ?>
+
+
+				<?php for($i=1;$i<=$page_num;$i++){ ?>
+                	<?php if($page==$i){ ?>
+					<a href="index.php?ctl=search&page=<?php echo $i?>#menu" class="on"><?php echo $i;?></a>
+				<?php } else{?>
+					<a href="index.php?ctl=search&page=<?php echo $i?>#menu"><?php echo $i;?></a>
+					<?php } ?>
+				<?php } ?>
+
+
+				<?php if($page+1<=$page_num){ ?>  
+					<a href="index.php?ctl=search&page=<?php echo $page+1 ?>#menu" target="_self" class="bottom">下一页</a>
+				<?php }else{ ?>
+					<a href="index.php?ctl=search&page=<?php echo $page ?>#menu" target="_self" class="bottom">下一页</a>
+				<?php } ?>
+			</div>
+			<form action="index.php?mot=home&ctl=search" method="post">
+				<input type="text" name="page"><button type="submit">跳转</button>
+			</form>
+		</div>
+		<!--page结束-->
+		
+		</body>
+</html>
